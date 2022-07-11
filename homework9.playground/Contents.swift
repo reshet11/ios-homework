@@ -5,10 +5,7 @@ import UIKit
 //этого распечатывает результат в консоль;
 
 func firstFunc(array: [Int]) {
-    let arraySort = array.sorted()
-    for num in arraySort {
-        print("\(num)")
-    }
+    print(array.sorted())
 }
 
 let numArray = [5, 13, 34, 8, 2, 7, 44, 56, 71]
@@ -43,17 +40,32 @@ func secondFunc(array: [String]) {
     }
 }
 
+func secondFunc1(array: [String]) {
+    if array.count < 3 {
+        print("skdg")
+    } else {
+        var arrayInsert = array
+        
+        arrayInsert[0] = "Tom"
+        arrayInsert[1] = "Alex"
+        arrayInsert[2] = "Oleg"
+        
+        print(arrayInsert.sorted())
+    }
+}
+
+
 let textArray = ["Andrey", "Kirill", "Max", "Bob"]
 
-secondFunc(array: textArray)
-secondFunc(array: ["Grisha", "Olga"])
+//secondFunc(array: textArray)
+secondFunc1(array: ["Grisha", "Olga"])
 
 // третья функция принимает 2 массива String и складывает их. После этого
 //распечатывает результат в консоль.
 
 func thirdFunc(arrayOne: [String], arrayTwo: [String]) {
     let arrayResult = arrayOne + arrayTwo
-    print("\(arrayResult)")
+    print(arrayResult)
 }
 let oneArr = ["Moscow", "Berlin"]
 let twoArr = ["Russia", "Germany"]
@@ -95,8 +107,7 @@ for i in 0..<teacherJournal.count {
 //3) Создать функцию которая принимает имя и фамилию, потом положить это в массив и вывести результат в консоль.
 
 func addName(name: String, surname: String) {
-    let arrayName = [name, surname]
-    print("name - \(arrayName[0]), surname - \(arrayName[1])")
+    print([name, surname] + [surname, surname])
 }
 
 addName(name: "Andrey", surname: "Reshetnikov")
@@ -118,14 +129,16 @@ areaOfCircle(diameter: 8)
 
 //5) Создайте Dictionary с именем ученики , где ключ name и score, а значение (1 тюпл из 5 имен) и (второй тюпл из 5 оценок).И распечатайте только имена по ключу.
 
-let studentDict = ["name": ("Dmitry", "Sergey", "German", "Mihail", "Symon"),
+let studentDict = ["name1": ("Dmitry", "Sergey", "German", "Mihail", "Symon"),
                    "score": ("3", "4", "4", "5", "3")]
 
-if let nameTuple = studentDict["name"] {
-    print(nameTuple)
-} else {
-    print("nil")
-}
+print(studentDict["name"] ?? "не существует ключа name")
+
+//if let nameTuple = studentDict["name"] {
+//    print(nameTuple)
+//} else {
+//    print("nil")
+//}
 
 //6) Функция принимает 3 массива String. Задача: сложить их вместе, преобразовать в тип Int и посчитать сумму. Распечатать результат в консоль.
 
@@ -146,9 +159,25 @@ func calculateArray(arrayOne: [String], arrayTwo: [String], arrayThree: [String]
     return sum
 }
 
-let walletOne = ["100", "13", "35"]
-let walletTwo = ["50", "16", "43", "4", "78", "2", "5"]
+let walletOne = ["100", "13l", "35"]
+let walletTwo = ["50", "10", "43", "4", "78", "2", "5"]
 let walletThree = ["50", "1", "20", "10", "100"]
 
-calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
-let sum = calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
+//calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
+//let sum = calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
+
+func calculateArray1(arrayOne: [String], arrayTwo: [String], arrayThree: [String]) -> Int {
+    let sumStringArray = arrayOne + arrayTwo + arrayThree
+    var sum = 0
+    
+    for i in sumStringArray {
+        if let number = Int(i) {
+            sum += number
+        } else {
+            print(i, "is not a number")
+        }
+    }
+    print("Sum of all arrays = \(sum)")
+    return sum
+}
+calculateArray1(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
