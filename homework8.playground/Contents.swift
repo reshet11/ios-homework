@@ -13,13 +13,13 @@ mainLoop: for i in 1...200 {
 
 //2)Создать в if и отдельно в switch программу которая будет смотреть на возраст человека и говорить куда ему идти в школу, в садик, в универ, на работу или на пенсию и тд
 
-var age = 28
+var age = 9
 
 if age >= 0 && age <= 2 {
     print("sitAtHome")
-} else if age >= 3 && age <= 5 {
+} else if (3...5).contains(age) {
     print("kindergarten")
-} else if age >= 6 && age <= 17 {
+} else if (6...17) ~= age {
     print("school")
 } else if age >= 18 && age <= 24 {
     print("university")
@@ -46,7 +46,7 @@ case 65...116:
     print("\(age) age - pension")
 default:
     print("\(age) - it's not age")
-    break
+    //break
 }
 
 //3)Создать все циклы for in которые вы знаете ,максимально больше приветствуется
@@ -91,9 +91,9 @@ for i in 1...15 where i % 2 == 0 {
 }
 
 let arrayAlphabet = ["a", "b", "c", "d", "e", "f"]
-let arrayCount = arrayAlphabet.count - 1
+let arrayCount = arrayAlphabet.count
 for i in 0..<arrayAlphabet.count {
-    print("\(arrayAlphabet[arrayCount - i])")
+    print("\(arrayAlphabet[arrayCount - i - 1])")
 }
 
 //4)в switch и отдельно в if создать систему оценивания школьников по 12 бальной системе и и высказывать через print мнение
@@ -132,16 +132,16 @@ var sortedNamesArrayOne = [String]()
 for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" {
     for i in arrayName {
         for j in i {
-            if a == j {
+            if a.lowercased() == j.lowercased() {
                 sortedNamesArrayOne.append(i)
             }
             break
         }
     }
 }
-print("\(sortedNamesArrayOne)")
+print(sortedNamesArrayOne)
 
-let sortedNamesArray = arrayName.sorted()
+let sortedNamesArray = arrayName.sorted(by: >)
 for nameSort in sortedNamesArray {
-    print("\(nameSort)")
+    print(nameSort)
 }
