@@ -24,6 +24,9 @@ if let numberOne = Int(numberOne),
     print("Not a number")
 }
 
+let res = [numberOne, numberTwo, numberThree, numberFour, numberFive].map { Int($0) ?? 0 }.reduce(0, +)
+
+
 //второй способ
 
 var result = 0
@@ -62,13 +65,13 @@ for character in "Andrey" {
 
 //5) Создайте массив с возрастом всех членов вашей семьи и распечатайте в консоли через цикл for.
 
-let arrayAge = [(28, "my age"),
-                (41, "sister's age"),
-                (61, "mother's age"),
-                (67, "dad's age"),
-                (19, "age of first nephew"),
-                (11, "age of second nephew")]
+let agesArray = [(28, "my age"),
+                 (41, "sister's age"),
+                 (61, "mother's age"),
+                 (67, "dad's age"),
+                 (19, "age of first nephew"),
+                 (11, "age of second nephew")]
 
-for (age, familyMember) in arrayAge {
+for (age, familyMember) in agesArray {
     print("\(age) - \(familyMember)")
 }
