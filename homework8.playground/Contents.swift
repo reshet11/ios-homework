@@ -28,7 +28,7 @@ if age >= 0 && age <= 2 {
 } else if age >= 65 && age <= 116 {
     print("pension")
 } else {
-    print("do not live at this age")
+    print("it's not age")
 }
 
 switch age {
@@ -45,26 +45,44 @@ case 25...64:
 case 65...116:
     print("\(age) age - pension")
 default:
-    print("\(age) age - do not live at this age")
+    print("\(age) - it's not age")
     break
 }
 
 //3)Создать все циклы for in которые вы знаете ,максимально больше приветствуется
 
 let numArray = [7, 13, 32, 1, 3, 87, 12]
+
+for num in numArray.reversed() {
+    print("\(num)")
+}
+
 var resultNumArray = 0
 
 for num in numArray {
     resultNumArray += num
 }
 
-for text in "Hello!" {
-    print("\(text)")
+for (index, value) in numArray.enumerated() {
+  print("number \(index + 1) = \(value)")
+}
+
+for charText in "Hello!".reversed() {
+    print("\(charText)")
 }
 
 var nameDict = ["name1": "Alex", "name2": "Tony", "name3": "Bob"]
+
 for (_, value) in nameDict {
     print("name - \(value)")
+}
+
+for (key, _) in nameDict {
+    print("keys - \(key)")
+}
+
+for (key, value) in nameDict {
+    print("\(key) - \(value)")
 }
 
 var res = 0
@@ -93,7 +111,6 @@ case 10...12:
     print("\(valuePoints) points - very good")
 default:
     print("\(valuePoints) points - not points")
-    break
 }
 
 if valuePoints >= 1 && valuePoints <= 3 {
@@ -111,19 +128,20 @@ if valuePoints >= 1 && valuePoints <= 3 {
 //5) Создайте массив(без тюплов) с именами всех членов вашей семьи включая родственников что б количество имен не менее 10 было и отсортируйте, распечатайте по алфавиту их в консоль
 
 let arrayName = ["Viktor", "Galina", "Andrey", "Elena", "Vadim", "Ilya", "Anastasia", "Tatiana", "Kristina", "Yuri"]
-
+var sortedNamesArrayOne = [String]()
 for a in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" {
     for i in arrayName {
         for j in i {
             if a == j {
-                print(i)
+                sortedNamesArrayOne.append(i)
             }
             break
         }
     }
 }
+print("\(sortedNamesArrayOne)")
 
-let arrayNameSort = arrayName.sorted()
-for nameSort in arrayNameSort {
+let sortedNamesArray = arrayName.sorted()
+for nameSort in sortedNamesArray {
     print("\(nameSort)")
 }
