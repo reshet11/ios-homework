@@ -4,7 +4,7 @@ import UIKit
 
 let numberOne = "14235"
 let numberTwo = "222"
-let numberThree = "3O2"
+let numberThree = "32"
 let numberFour = "53"
 let numberFive = "52"
 
@@ -12,79 +12,39 @@ let numberFive = "52"
 
 var sumResult = 0
 
-if let sumOne = Int(numberOne) {
-    sumResult += sumOne
+if let numberOne = Int(numberOne),
+   let numberTwo = Int(numberTwo),
+   let numberThree = Int(numberThree),
+   let numberFour = Int(numberFour),
+   let numberFive = Int(numberFive) {
+    
+    sumResult = numberOne + numberTwo + numberThree + numberFour + numberFive
+    print("\(sumResult)")
 } else {
-    print("\(numberOne) - not a number")
+    print("Not a number")
 }
-
-if let sumTwo = Int(numberTwo) {
-    sumResult += sumTwo
-} else {
-    print("\(numberTwo) - not a number")
-}
-
-if let sumThree = Int(numberThree) {
-    sumResult += sumThree
-} else {
-    print("\(numberThree) - not a number")
-}
-
-if let sumFour = Int(numberFour) {
-    sumResult += sumFour
-} else {
-    print("\(numberFour) - not a number")
-}
-
-if let sumFive = Int(numberFive) {
-    sumResult += sumFive
-} else {
-    print("\(numberFive) - not a number")
-}
-
-print("\(sumResult)")
 
 //второй способ
 
 var result = 0
 
-if Int(numberOne) != nil {
-    result += Int(numberOne)!
+if Int(numberOne) != nil,
+   Int(numberTwo) != nil,
+   Int(numberThree) != nil,
+   Int(numberFour) != nil,
+   Int(numberFive) != nil {
+    
+    result = Int(numberOne)! + Int(numberTwo)! + Int(numberThree)! + Int(numberFour)! + Int(numberFive)!
+    print("\(result)")
 } else {
-    print("\(numberOne) - not a number")
+    print("Not a number")
 }
-
-if Int(numberTwo) != nil {
-    result += Int(numberTwo)!
-} else {
-    print("\(numberTwo) - not a number")
-}
-
-if Int(numberThree) != nil {
-    result += Int(numberThree)!
-} else {
-    print("\(numberThree) - not a number")
-}
-
-if Int(numberFour) != nil {
-    result += Int(numberFour)!
-} else {
-    print("\(numberFour) - not a number")
-}
-
-if Int(numberFive) != nil {
-    result += Int(numberFive)!
-} else {
-    print("\(numberFive) - not a number")
-}
-
-print("\(result)")
 
 //2)Создать 3 константы со значением nil.
 
-let textOne: Int! = nil
-let textTwo: Bool! = nil
-let textThree: Double! = nil
+let textOne: Int? = nil
+let textTwo: Bool? = nil
+let textThree: Double? = nil
 
 //3)Создать 5 опциональных типов констант и установите им значения.
 
@@ -92,18 +52,23 @@ let date: String? = "30.06.2022"
 let length: Int? = 103
 let connect: Bool? = true
 let pi: Double? = 3.1415
-let distance: Float = 104.32
+let distance: Float? = 104.32
 
 //4)Вспоминаем прошлые уроки : Распечатайте свое имя в цикле for.
 
-for name in "Andrey" {
-    print("\(name)")
+for character in "Andrey" {
+    print("\(character)")
 }
 
 //5) Создайте массив с возрастом всех членов вашей семьи и распечатайте в консоли через цикл for.
 
-let arrayAge = [28, 41, 61, 67, 19, 11]
+let arrayAge = [(28, "my age"),
+                (41, "sister's age"),
+                (61, "mother's age"),
+                (67, "dad's age"),
+                (19, "age of first nephew"),
+                (11, "age of second nephew")]
 
-for i in 0..<arrayAge.count {
-    print("\(arrayAge[i])")
+for (age, familyMember) in arrayAge {
+    print("\(age) - \(familyMember)")
 }
