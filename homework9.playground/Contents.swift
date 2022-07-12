@@ -4,19 +4,19 @@ import UIKit
 // первая функция принимает массив Int и сортирует его по порядку (возрастание). После
 //этого распечатывает результат в консоль;
 
-func firstFunc(array: [Int]) {
+func sortArrayNumbers(array: [Int]) {
     print(array.sorted())
 }
 
 let numArray = [5, 13, 34, 8, 2, 7, 44, 56, 71]
 
-firstFunc(array: numArray)
-firstFunc(array: [3, 17, 1, 4, 7, 33, 128])
+sortArrayNumbers(array: numArray)
+sortArrayNumbers(array: [3, 17, 1, 4, 7, 33, 128])
 
 // вторая функция принимает массив String, меняет 1, 2 и 3 элементы и сортирует по
 //алфавиту. После этого распечатывает результат в консоль;
 
-func secondFunc(array: [String]) {
+func firstSortArrayStrings(array: [String]) {
     var arrayInsert = array
     
     switch arrayInsert.count {
@@ -32,15 +32,11 @@ func secondFunc(array: [String]) {
     default:
         break
     }
-
-    let arraySort = arrayInsert.sorted()
     
-    for text in arraySort {
-        print("\(text)")
-    }
+    print(arrayInsert.sorted())
 }
 
-func secondFunc1(array: [String]) {
+func secondSortArrayStrings(array: [String]) {
     if array.count < 3 {
         print("skdg")
     } else {
@@ -57,20 +53,20 @@ func secondFunc1(array: [String]) {
 
 let textArray = ["Andrey", "Kirill", "Max", "Bob"]
 
-//secondFunc(array: textArray)
-secondFunc1(array: ["Grisha", "Olga"])
+firstSortArrayStrings(array: textArray)
+secondSortArrayStrings(array: ["Grisha", "Olga"])
 
 // третья функция принимает 2 массива String и складывает их. После этого
 //распечатывает результат в консоль.
 
-func thirdFunc(arrayOne: [String], arrayTwo: [String]) {
+func arrayAddition(arrayOne: [String], arrayTwo: [String]) {
     let arrayResult = arrayOne + arrayTwo
     print(arrayResult)
 }
 let oneArr = ["Moscow", "Berlin"]
 let twoArr = ["Russia", "Germany"]
 
-thirdFunc(arrayOne: oneArr, arrayTwo: twoArr)
+arrayAddition(arrayOne: oneArr, arrayTwo: twoArr)
 
 //2) Создать журнал для учителя, который будет принимать имя студента, профессию и оценку и записывает это все в массив. И внесите 10 студентов туда и распечатаете через цикл for.
 
@@ -103,6 +99,28 @@ for i in 0..<teacherJournal.count {
     }
 }
 
+//используй кортеж в качестве элемента массива
+
+var teacherJournal2 = [(String, String, String)]()
+
+func addStudent2(name: String, profession: String, grade: String) {
+    teacherJournal2.append((name, profession, grade))
+}
+
+addStudent2(name: "Andrey", profession: "builder", grade: "4")
+addStudent2(name: "Alex", profession: "engineer", grade: "6")
+addStudent2(name: "Oleg", profession: "policeman", grade: "3")
+addStudent2(name: "Egor", profession: "driver", grade: "5")
+addStudent2(name: "Vlad", profession: "actor", grade: "9")
+addStudent2(name: "Roman", profession: "seller", grade: "10")
+addStudent2(name: "Max", profession: "fireman", grade: "11")
+addStudent2(name: "Konstantin", profession: "postman", grade: "2")
+addStudent2(name: "Anton", profession: "doctor", grade: "4")
+addStudent2(name: "Nikita", profession: "artist", grade: "7")
+
+for student in teacherJournal2 {
+    print(student)
+}
 
 //3) Создать функцию которая принимает имя и фамилию, потом положить это в массив и вывести результат в консоль.
 
@@ -163,7 +181,8 @@ let walletOne = ["100", "13l", "35"]
 let walletTwo = ["50", "10", "43", "4", "78", "2", "5"]
 let walletThree = ["50", "1", "20", "10", "100"]
 
-//calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
+calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
+
 //let sum = calculateArray(arrayOne: walletOne, arrayTwo: walletTwo, arrayThree: walletThree)
 
 func calculateArray1(arrayOne: [String], arrayTwo: [String], arrayThree: [String]) -> Int {
