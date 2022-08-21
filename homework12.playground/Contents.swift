@@ -101,7 +101,7 @@ class Poker {
                             "Full House",
                             "Four of a Kind",
                             "Royal Flush"]
-
+    
     enum Suits: String {
         case spades = "spades"
         case diamonds = "diamonds"
@@ -110,7 +110,7 @@ class Poker {
     }
     
     func combination(_ suit: Suits, _ combination: String) {
-    
+        
         for (i, array) in arrayCombination.enumerated() {
             if array == combination {
                 if i == 5 || i == 6 || i == 7 || i == 8 {
@@ -147,17 +147,10 @@ class FilterName {
                          "Simon", "Stephen", "Travis",
                          "Victor", "William", "Oleg"]
         
-        var arrayFilter = [String]()
+        let filterArray = arrayName.filter { $0.first == char }
         
-        for array in arrayName {
-            for charName in array {
-                if charName == char {
-                    arrayFilter.append(array)
-                }
-                break
-            }
-        }
-        return arrayFilter.sorted()
+        return filterArray.sorted()
+        
     }
     
     func arrayString(_ arrayString: [String]) {
