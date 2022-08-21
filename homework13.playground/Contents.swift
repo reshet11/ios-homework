@@ -2,17 +2,16 @@ import UIKit
 
 // 1) Создать класс "IOSStudents", добавить ему property: dateOfBirth, skills. Для тренировки.
 
+struct DateOfBirth {
+    var day: Int
+    var month: Month
+    var year: Int
+}
+enum Month {
+    case January, February, March, April, May, June, July, August, September, October, November, December
+}
+
 class IOSStudents {
-    
-    enum Month {
-        case January, February, March, April, May, June, July, August, September, October, November, December
-    }
-    
-    struct DateOfBirth {
-        var day: Int
-        var month: Month
-        var year: Int
-    }
     
     var dateOfBirth: DateOfBirth
     var skills: String
@@ -23,7 +22,7 @@ class IOSStudents {
     }
 }
 
-var student = IOSStudents(dateOfBirth: .init(day: 11, month: .September, year: 1994), skills: "junior developer")
+var student = IOSStudents(dateOfBirth: DateOfBirth(day: 11, month: .September, year: 1994), skills: "junior developer")
 student.dateOfBirth.month
 
 // 2) Создавайте свои структуры с разными видами свойств: сохраняемые/не сохраняемые, вычисляемые, свойства типа и т.д.
@@ -301,8 +300,15 @@ class TypeFunctions {
         return numOne + numTwo
     }
     
-    func closureFunc(closure: [String]) {
-        print(closure)
+    func closureFunc(_ array: [Int], _ filtr: (Int) -> Bool ) {
+        var filter = [Int]()
+        
+        for i in array {
+            if filtr(i) {
+                filter.append(i)
+            }
+        }
+        print(filter.sorted())
     }
 }
 
@@ -311,6 +317,5 @@ function.welcome()
 function.name("Andrey")
 function.calculateSum(3, 5)
 
-let array = ["Bob", "Peter", "Alex", "Tom"]
-let closureArray = array.sorted { $0 < $1 }
-function.closureFunc(closure: closureArray)
+let arrayNum = [4, 7, 13, 66, 3, 16, 27, 9, 1, 8, 21]
+function.closureFunc(arrayNum, { $0 % 3 == 0 } )
