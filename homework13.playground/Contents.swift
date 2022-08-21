@@ -81,7 +81,6 @@ struct CreateRightTriangle {
         }
     }
     var angleC: Double {
-        
         get {
             return 90 - angleA
         }
@@ -168,6 +167,10 @@ struct Resume {
                 phoneNumber = oldValue
                 print("phone number - incorrectly")
             } else {
+                if phoneNumber.first != "8" {
+                    phoneNumber = oldValue
+                    print("first character - 8")
+                }
                 for i in phoneNumber {
                     if i != "8" {
                         phoneNumber = oldValue
@@ -180,12 +183,7 @@ struct Resume {
     }
     var eMail: String {
         didSet {
-            if eMail.contains("@gmail.com") {
-                
-            } else {
-                eMail = oldValue
-                print("email - incorrectly")
-            }
+            eMail = eMail.validateByMask(.email) ? eMail : oldValue
         }
     }
     var aboutYou: String {
@@ -197,6 +195,19 @@ struct Resume {
         }
     }
     
+}
+
+enum RegExValues: String {
+    case email = #"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"#
+}
+
+extension String {
+    func validateByMask(_ mask: RegExValues) -> Bool {
+        if self.range(of: mask.rawValue, options: .regularExpression) == nil {
+            return false
+        }
+        return true
+    }
 }
 
 var resume = Resume(firstName: "first name",
@@ -212,8 +223,9 @@ resume.lastName = "Fedorov"
 resume.position = "ios developer"
 resume.expirience = 2
 resume.phoneNumber = "88005553555"
-resume.eMail = "fedorov@gmail.com"
+resume.eMail = "fedorov1*2@gmail.com"
 resume.aboutYou = "I do programming. Football is my hobby"
+resume.eMail
 
 // 5) Задание на закрепление предыдущих тем:
 // Создать журнал, чтоб можно было писать имя, фамилию и оценку
