@@ -137,16 +137,25 @@ let wasEmptyArray = emptyArray(emptyArrayString)
 //7) Написать функцию - сайт который требует имя, фамилию, ник, емейл, пароль. Всё вывести в консоль.
 
 func checkText (_ text: String) -> Bool {
-    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    let pattern = "^[A-Za-z]{3,16}$"
     var check = true
     for i in text {
-        if str.contains(i) {
+        if pattern.contains(i) {
         //тут вопрос, как можно сделать по другому?
         } else {
             check = false
         }
     }
     return check
+  
+// этот вариант работает но не совсем он мне понятен, хочу более примитивную версию
+//
+//      let userName = text.trimmingCharacters(in: CharacterSet.whitespaces)
+//      let regex =  "^[a-zA-Z]{3,16}$"
+//      let predicate = NSPredicate(format:"SELF MATCHES %@",regex)
+//      let result = predicate.evaluate(with: userName)
+//      return result
+
 }
 
 func site(_ name: String,
