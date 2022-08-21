@@ -423,36 +423,38 @@ enum ResumeField {
     case hobby
 }
 
-var resume = ResumeField.name
-resume = .hobby
-
-if resume == .name {
-    print("\(resume) - Andrey")
-} else if resume == .surname {
-    print("\(resume) - Reshetnikov")
-} else if resume == .age {
-    print("\(resume) - 27")
-} else if resume == .profession {
-    print("\(resume) - Consultant Sap")
-} else if resume == .education {
-    print("\(resume) - higher education")
-} else {
-    print("\(resume) - football")
-}
-
-switch resume {
-case .name:
-    print("\(resume) - Andrey")
-case .surname:
-    print("\(resume) - Reshetnikov")
-case .age:
-    print("\(resume) - 27")
-case .profession:
-    print("\(resume) - Consultant Sap")
-case .education:
-    print("\(resume) - higher education")
-case .hobby:
-    print("\(resume) - football")
+var resume = [ResumeField.name, ResumeField.surname]
+//resume = .hobby
+resume.forEach { resume in
+    
+    if resume == .name {
+        print("\(resume) - Andrey")
+    } else if resume == .surname {
+        print("\(resume) - Reshetnikov")
+    } else if resume == .age {
+        print("\(resume) - 27")
+    } else if resume == .profession {
+        print("\(resume) - Consultant Sap")
+    } else if resume == .education {
+        print("\(resume) - higher education")
+    } else {
+        print("\(resume) - football")
+    }
+    
+    switch resume {
+    case .name:
+        print("\(resume) - Andrey")
+    case .surname:
+        print("\(resume) - Reshetnikov")
+    case .age:
+        print("\(resume) - 27")
+    case .profession:
+        print("\(resume) - Consultant Sap")
+    case .education:
+        print("\(resume) - higher education")
+    case .hobby:
+        print("\(resume) - football")
+    }
 }
 
 //Оба варианта решают задачу, но в данном примере лучше использовать switch case, так как условий для проверки много. If else необходимо использовать когда нужно проверить например одно или два выражения. Ну и в целом вариант с множеством проверок if else не очень читабельный.
