@@ -124,7 +124,7 @@ case .senior:
 //3) Создать enum со всеми цветами радуги. Создать функцию, которая содержит названия разных предметов или объектов.
 //Пример результата в консоли "apple green", "sun red" и т.д.
 
-enum ColorRainbow {
+enum ColorRainbow: CaseIterable {
     case red
     case orange
     case yellow
@@ -137,7 +137,7 @@ enum ColorRainbow {
 //задание не совсем понял, сделал два варианта
 // через enum
 
-enum Subject {
+enum Subject: CaseIterable {
     case apple
     case sun
     case phone
@@ -145,31 +145,34 @@ enum Subject {
     case book
 }
 
-print(Subject.apple, ColorRainbow.green)
-print(Subject.car, ColorRainbow.red)
-
-//через функцию
-func subject (_ color: ColorRainbow) {
-    switch color {
-    case .blue:
-        print("car \(color)")
-    case .red:
-        print("phone \(color)")
-    case .orange:
-        print("sun \(color)")
-    case .yellow:
-        print("lemon \(color)")
-    case .green:
-        print("apple \(color)")
-    case .cyan:
-        print("water \(color)")
-    case .violet:
-        print("pencil \(color)")
+for color in ColorRainbow.allCases {
+    for subj in Subject.allCases {
+        print(color, subj)
     }
 }
 
-subject(.blue)
-subject(.red)
+//через функцию
+func subject (_ subj: String, _ color: ColorRainbow) {
+    switch color {
+    case .blue:
+        print(subj, color)
+    case .red:
+        print(subj, color)
+    case .orange:
+        print(subj, color)
+    case .yellow:
+        print(subj, color)
+    case .green:
+        print(subj, color)
+    case .cyan:
+        print(subj, color)
+    case .violet:
+        print(subj, color)
+    }
+}
+
+subject("car", .blue)
+subject("phone", .red)
 
 //4) Создать функцию, которая выставляет оценки ученикам в школе.
 
@@ -198,119 +201,89 @@ studentAssessment("Ivanov Ivan", .satisfactory)
 
 //5) Создать программу, которая "рассказывает" - какие автомобили стоят в гараже.
 
-enum CarGarage {
-    enum Audi {
-        enum A3: String {
-            case color = "black"
-            case releaseDate = "2021"
-            case horsePower = "150"
-        }
-        enum A4: String {
-            case color = "white"
-            case releaseDate = "2018"
-            case horsePower = "249"
-        }
-        enum A5: String {
-            case color = "white"
-            case releaseDate = "2017"
-            case horsePower = "252"
-        }
-        enum Q3: String {
-            case color = "red"
-            case releaseDate = "2012"
-            case horsePower = "170"
-        }
-        enum Q5: String {
-            case color = "blue"
-            case releaseDate = "2014"
-            case horsePower = "225"
-        }
+struct CarGarage {
+    
+    enum Brand {
+        case audi, bmw
     }
-    enum BMW {
-        enum M3: String {
-            case color = "blue"
-            case releaseDate = "2018"
-            case horsePower = "431"
-        }
-        enum M5: String {
-            case color = "black"
-            case releaseDate = "2021"
-            case horsePower = "625"
-        }
-        enum X5: String {
-            case color = "black"
-            case releaseDate = "2014"
-            case horsePower = "249"
-        }
-        enum X6: String {
-            case color = "green"
-            case releaseDate = "2021"
-            case horsePower = "249"
-        }
+    
+    enum Model {
+        case a4, a5, a6, m5, x6
     }
+    
+    enum Color {
+        case black, white, blue, green, red
+    }
+    
+    var brand: Brand
+    var model: Model
+    var color: Color
+    var releaseDate: Int
+    var horsePower: Int
+    
 }
 
-let horsePowerAudiA3 = CarGarage.Audi.A3.horsePower.rawValue
-let colorAudiA4 = CarGarage.Audi.A4.color.rawValue
-let releaseDateBmwX6 = CarGarage.BMW.X6.releaseDate.rawValue
+let audiA5 = CarGarage(brand: .audi, model: .a5, color: .red, releaseDate: 2017, horsePower: 252)
 
 //6) Напишите как понимаете enumerations:что это такое, в чем их смысл, зачем нужны. Ваше личное мнение: как и где их можно использовать?
 
 //Перечисления - это общий тип для группы значений, но при этом сами значения могут быть любого типа.
-//Можно использовать для группировки каких-либо взаимосвязанных значений. Например, выбор направления или цвет одежды, а так же группировать во вложенные перечисления, как в номере задания 5.
+//Можно использовать для группировки каких-либо взаимосвязанных значений. Например, выбор направления или цвет одежды, а так же группировать во вложенные перечисления.
 
 //7) Написать по 5-10 enum разных типов + создать как можно больше своих enumerations.
 //Главное, соблюдайте правила написания: понятность и заглавная буква в начале названия. Пропустите их через switch и распечатайте (см.видео).
 
 enum DayOfWeek {
-    case Monday
-    case Tuesday
-    case Wednesday
-    case Thursday
-    case Friday
-    case Saturday
-    case Sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
 }
 
-let dayOfWeek = DayOfWeek.Monday
+let dayOfWeek = DayOfWeek.monday
 
 switch dayOfWeek {
-case .Monday:
+case .monday:
     print("Понедельник")
-case .Tuesday:
+case .tuesday:
     print("Вторник")
-case .Wednesday:
+case .wednesday:
     print("Среда")
-case .Thursday:
+case .thursday:
     print("Четверг")
-case .Friday:
+case .friday:
     print("Пятница")
-case .Saturday:
+case .saturday:
     print("Суббота")
-case .Sunday:
+case .sunday:
     print("Воскресенье")
 }
 
-enum Address {
-    case country (String)
-    case city (String)
-    case street (String)
-    case apartNum (Int, Int)
+enum Country {
+    case russia, america
+}
+enum Sity {
+    case moscow, newYork
+}
+enum Street {
+    case skladochnaya, tverskaya, pushkinskaya
+}
+enum ApartNum: Int {
+    case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
 }
 
-var address = Address.country("Russia")
-address = .apartNum(4, 114)
+let country = Country.russia
+let sity = Sity.moscow
+let street = Street.skladochnaya
+let apartNum = ApartNum.four.rawValue
 
-switch address {
-case .country (let country):
-    print("country - \(country)")
-case .city (let city):
-    print("city - \(city)")
-case .street (let street):
-    print("street - \(street)")
-case .apartNum (let houseNum, let apartNum):
-    print("houseNum - \(houseNum), apartNum - \(apartNum)")
-}
+print(country, sity, street, apartNum)
 
 enum Person {
     case Human (String, Int)
@@ -441,7 +414,7 @@ case .premium (let premium):
 //Пропустите ваше резюме сначала через if else, затем через switch — для того, чтобы было понимание читаемости и красоты кода.
 //Дайте свою оценку первому и второму варианту написания.
 
-enum Resume {
+enum ResumeField {
     case name
     case surname
     case age
@@ -450,7 +423,7 @@ enum Resume {
     case hobby
 }
 
-var resume = Resume.name
+var resume = ResumeField.name
 resume = .hobby
 
 if resume == .name {
