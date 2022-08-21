@@ -201,6 +201,26 @@ studentAssessment("Ivanov Ivan", .satisfactory)
 
 //5) Создать программу, которая "рассказывает" - какие автомобили стоят в гараже.
 
+enum Car {
+    case audiA3
+    case audiA4
+    case bmwM5
+    case bmwX6
+}
+
+var car = Car.audiA4
+
+switch car {
+case .audiA4:
+    print("\(Color.black) Audi A4 is in the garage")
+case .audiA3:
+    print("\(Color.white) Audi A3 is in the garage")
+case .bmwM5:
+    print("\(Color.black) BMW M5 is in the garage")
+case .bmwX6:
+    print("\(Color.white) BMW X6 is in the garage")
+}
+
 struct CarGarage {
     
     enum Brand {
