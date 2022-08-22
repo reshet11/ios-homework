@@ -301,14 +301,8 @@ class TypeFunctions {
     }
     
     func closureFunc(_ array: [Int], _ filtr: (Int) -> Bool ) {
-        var filter = [Int]()
-        
-        for i in array {
-            if filtr(i) {
-                filter.append(i)
-            }
-        }
-        print(filter.sorted())
+        let filterArray = array.filter(filtr).sorted()
+        print(filterArray)
     }
 }
 
