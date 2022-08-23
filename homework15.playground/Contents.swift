@@ -84,33 +84,61 @@ class Human {
     
     var name: String
     var age: Int
-    var gender: Gender
+    var gender = Gender.male
     
-    init(name: String, age: Int, gender: Gender) {
+    init(name: String, age: Int) {
         self.name = name
         self.age = age
-        self.gender = gender
     }
     
-    func info() {
-        print("name - \(name), age - \(age), gender - \(gender)")
+    func info() -> String {
+        return "\(name), \(age) age, \(gender) gender"
     }
 }
 
-var human = Human(name: "Roman", age: 32, gender: .male)
+var human = Human(name: "Felix", age: 30)
+
+// 5.Создать ещё 2 класса которые наследуются от класса человек и переопределить методы и свойства.
+
+class Mother: Human {
+    
+    override var gender: Human.Gender {
+        get {
+            return .female
+        }
+        set {
+            super.gender = newValue
+        }
+    }
+    
+    override func info() -> String {
+        return super.info() + ". Mother"
+    }
+}
+
+var mother = Mother(name: "Luci", age: 51)
+
+class Father: Human {
+    
+    override var gender: Human.Gender {
+        get {
+            return .male
+        }
+        set {
+            super.gender = newValue
+        }
+    }
+    
+    override func info() -> String {
+        return "Father - \(name), \(age) age"
+    }
+}
+
+var father = Father(name: "Simon", age: 55)
+
 human.info()
-
-// 5.Создать ещё 2 класса которые наследуються от класса человек и переопределить методы и свойства.
-// Наследование - это следующая домашка, сделаю это задание после прохождения, пока написал все что знаю по этой теме.
-
-class Children: Human {
-    
-    func children() {
-        print("\(name), \(String(age)) age")
-    }
-}
-
-var child = Children(name: "Nick", age: 8, gender: .male)
+mother.info()
+father.info()
 
 // 6.Создать дикшинари который хранит все типы данных которые есть а ключ должен быть только строка (воспользоваться enum для типов данных)
 
