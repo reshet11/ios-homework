@@ -73,10 +73,8 @@ arrayPeople.append(driver)
 
 for value in arrayPeople {
     print("name - \(value.name), height - \(value.height), weight - \(value.weight), gender - \(value.gender). Say: \(value.say())")
-    if value is Driver {
-        if let driver = value as? Driver {
-            print("age driver - \(driver.age), last name driver - \(driver.lastName)")
-        }
+    if let driver = value as? Driver {
+        print("age driver - \(driver.age), last name driver - \(driver.lastName)")
     }
 }
 
@@ -137,15 +135,12 @@ let allArray: [AnyObject] = [people, cook, manager, fighter, driver, martian, ca
 
 // 11.В цикле выводить тип объекта (People или Марсианин) перед тем как выводить его свойства и вызывать метод
 
-for array in allArray {
-    if array is People {
-        if let arrayPeopl = array as? People {
-            print("\(type(of: people)) - \(arrayPeopl.name). Say - \(arrayPeopl.say())")
-        }
+for object in allArray {
+    
+    if let arrayPeopl = object as? People {
+        print("\(type(of: people)) - \(arrayPeopl.name). Say - \(arrayPeopl.say())")
     }
-    if array is Martian {
-        if let arrayMart = array as? Martian {
-            print("\(type(of: martian)) - \(arrayMart.name). Say - \(arrayMart.say())")
-        }
+    if let arrayMart = object as? Martian {
+        print("\(type(of: martian)) - \(arrayMart.name). Say - \(arrayMart.say())")
     }
 }
