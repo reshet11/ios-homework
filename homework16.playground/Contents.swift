@@ -4,10 +4,10 @@ import UIKit
 
 class People {
     
-    var name: String
-    var height: Int
-    var weight: Int
-    var gender: String
+    let name: String
+    let height: Int
+    let weight: Int
+    let gender: String
     
     init(name: String, height: Int, weight: Int, gender: String) {
         self.name = name
@@ -60,8 +60,8 @@ for value in arrayPeople {
 
 class Driver: People {
     
-    var lastName = "Petrov"
-    var age = 32
+    let lastName = "Petrov"
+    let age = 32
     
     override func say() -> String {
         return super.say() + " I like to drive"
@@ -73,8 +73,10 @@ arrayPeople.append(driver)
 
 for value in arrayPeople {
     print("name - \(value.name), height - \(value.height), weight - \(value.weight), gender - \(value.gender). Say: \(value.say())")
-    if value === driver {
-        print("age driver - \(driver.age), last name driver - \(driver.lastName)")
+    if value is Driver {
+        if let driver = value as? Driver {
+            print("age driver - \(driver.age), last name driver - \(driver.lastName)")
+        }
     }
 }
 
@@ -131,17 +133,19 @@ let arrayMartian = [martian, carrionites, mentors]
 
 // 10.Объединить всех people и Марсианинов) в один массив.
 
-var allArray: [AnyObject] = [people, cook, manager, fighter, driver, martian, carrionites, mentors]
+let allArray: [AnyObject] = [people, cook, manager, fighter, driver, martian, carrionites, mentors]
 
 // 11.В цикле выводить тип объекта (People или Марсианин) перед тем как выводить его свойства и вызывать метод
 
 for array in allArray {
     if array is People {
-        let arrayPeopl = array as! People
-        print("\(type(of: people)) - \(arrayPeopl.name). Say - \(arrayPeopl.say())")
+        if let arrayPeopl = array as? People {
+            print("\(type(of: people)) - \(arrayPeopl.name). Say - \(arrayPeopl.say())")
+        }
     }
     if array is Martian {
-        let arrayMart = array as! Martian
-        print("\(type(of: martian)) - \(arrayMart.name). Say - \(arrayMart.say())")
+        if let arrayMart = array as? Martian {
+            print("\(type(of: martian)) - \(arrayMart.name). Say - \(arrayMart.say())")
+        }
     }
 }
