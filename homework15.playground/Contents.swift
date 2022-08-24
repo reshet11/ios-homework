@@ -4,9 +4,9 @@ import UIKit
 
 class Family {
     
-    var mother: String
-    var father: String
-    var children: [String]
+    let mother: String
+    let father: String
+    let children: [String]
     
     init(mother: String, father: String, children: [String]) {
         self.mother = mother
@@ -82,8 +82,8 @@ class Human {
         case male, female
     }
     
-    var name: String
-    var age: Int
+    let name: String
+    let age: Int
     var gender = Gender.male
     
     init(name: String, age: Int) {
