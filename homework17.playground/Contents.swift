@@ -14,7 +14,7 @@ enum Actions {
     case unloadTrunk
 }
 
-struct Car {
+struct Car: Hashable {
     var brand: String
     var productionYear: Int
     var trunk: Int
@@ -40,7 +40,7 @@ struct Car {
     }
 }
 
-struct Truck {
+struct Truck: Hashable {
     var brand: String
     var productionYear: Int
     var trunk: Int
@@ -77,18 +77,23 @@ truck.action(.closedWindows)
 // 6.Положить объекты структур в словарь как ключи! а их названия как строки например var dict = [structCar: "structCar"]
 // значение объекта в ключ не положить, так как они могут повторяться и перезатрут уже существующие, ну или я не так понял задание...
 
-var dict = [String: Any]()
+//var dict = [String: Any]()
+//
+//dict["brand"] = car.brand
+//dict["productionYear"] = car.productionYear
+//dict["trunk"] = car.trunk
+//dict["engineRun"] = car.engineRun
+//dict["windowsOpen"] = car.windowsOpen
+//dict["trunkFull"] = car.trunkFull
+//
+//for (key, value) in dict {
+//    print("key:\(key), value:\(value)")
+//}
 
-dict["brand"] = car.brand
-dict["productionYear"] = car.productionYear
-dict["trunk"] = car.trunk
-dict["engineRun"] = car.engineRun
-dict["windowsOpen"] = car.windowsOpen
-dict["trunkFull"] = car.trunkFull
+var dict = [AnyHashable: String]()
 
-for (key, value) in dict {
-    print("key:\(key), value:\(value)")
-}
+dict[car] = "car"
+dict[truck] = "truck"
 
 // 7.Почитать о Capture List (см ссылку ниже) - и описать своими словами и сделать скрин своего примера и объяснения https://www.hackingwithswift.com/articles/179/capture..
 
