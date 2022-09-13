@@ -4,29 +4,33 @@ import UIKit
 
 extension String {
     subscript(value: Range<Int>) -> String {
-        let start = self.index(self.startIndex, offsetBy: value.startIndex)
-        let end = self.index(start, offsetBy: value.endIndex)
-        
-        return String(self[start..<end])
+        if value.lowerBound < self.count && value.upperBound - 1 < self.count {
+            let start = self.index(self.startIndex, offsetBy: value.lowerBound)
+            let end = self.index(start, offsetBy: value.upperBound)
+            return String(self[start..<end])
+        } else {
+            return "error"
+        }
     }
 }
 
 let name = "Andrey"
 name[2..<4]
+name[10..<12]
 
 // 2. Расширить Int и добавить 3 метода возведение в квадрат, куб, степень
 
 extension Int {
     func squared() -> Int {
-        return (self * self)
+        self * self
     }
     
     func cube() -> Int {
-        return (self * self * self)
+        self * self * self
     }
     
     func exponent(degree: Double) -> Double {
-        return pow(Double(self), degree)
+        pow(Double(self), degree)
     }
 }
 
@@ -51,13 +55,13 @@ age.evenOrOdd()
 
 extension Double {
     var rub: Double {
-        return self
+        self
     }
     var dollar: Double {
-        return self * 0.017
+        self * 0.017
     }
     var euro: Double {
-        return self * 0.016
+        self * 0.016
     }
 }
 
